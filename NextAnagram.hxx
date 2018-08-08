@@ -78,6 +78,19 @@ TList NextAnagram( const TList& lst )
     q.push(q2.front());
     q2.pop();
   }
+  std::cout<<"Stack: "<<std::endl;
+  while(!s.empty())
+  {
+    aux=s.top();
+    std::cout<<s.top();
+    s.pop();
+    s2.push(aux);
+  }
+  while(!s2.empty())
+  {
+    s.push(s2.top());
+    s2.pop();
+  }
   // 2.5. if pivot has been found...
   if( !finished )
   {
@@ -91,6 +104,7 @@ TList NextAnagram( const TList& lst )
       if(q.front()<pivot)
       {
         v_aux=q.front();
+        std::cout<<std::endl<<"If front queue: "<<q.front()
         q.pop();
       }
       else
