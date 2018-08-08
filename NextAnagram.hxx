@@ -69,7 +69,7 @@ TList NextAnagram( const TList& lst )
   while(!q.empty())
   {
     aux=q.front();
-    std::cout<<s.top();
+    std::cout<<q.front();
     q.pop();
     q2.push(aux);
   }
