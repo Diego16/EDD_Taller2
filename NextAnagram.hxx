@@ -117,7 +117,8 @@ TList NextAnagram( const TList& lst )
   }
   // 10. Return
   for(lIt=lst.begin();lIt!=lst.end();lIt++)
-  std::cout<<*lIt;
+    std::cout<<*lIt;
+  std::cout<<std::endl;
   return( res );
 }
 
