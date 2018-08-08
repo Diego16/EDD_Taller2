@@ -115,7 +115,19 @@ TList NextAnagram( const TList& lst )
     }
     // 5. Put pivot back to queue
     q.push( pivot );
-
+    std::cout<<std::endl<<"Queue below pivot:"<<std::endl;
+    while(!q.empty())
+    {
+      aux=q.front();
+      std::cout<<q.front();
+      q.pop();
+      q2.push(aux);
+    }
+    while(!q2.empty())
+    {
+      q.push(q2.front());
+      q2.pop();
+    }
     // 6. Find the value just above pivot
     /** TODO #4 **/
     do
@@ -148,7 +160,19 @@ TList NextAnagram( const TList& lst )
     }
 
   } // fi
-
+  std::cout<<std::endl<<"Final queue:"<<std::endl;
+  while(!q.empty())
+  {
+    aux=q.front();
+    std::cout<<q.front();
+    q.pop();
+    q2.push(aux);
+  }
+  while(!q2.empty())
+  {
+    q.push(q2.front());
+    q2.pop();
+  }
   // 8. Finish filling the stack by emptying the queue
   /** TODO #5 **/
   while(!q.empty())
