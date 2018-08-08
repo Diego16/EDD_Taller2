@@ -46,7 +46,6 @@ int main( int argc, char* argv[] )
 
     // Get type of data
     line_stream >> line_type;
-    std::cout<<line_type<<std::endl;
     if( line_type == 0 )
     {
       // String list
