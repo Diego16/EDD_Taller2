@@ -46,9 +46,9 @@ TList NextAnagram( const TList& lst )
       v_aux=s.top();
       s.pop();
     } // fi
-    std::cout<<"Finding pivot"<<std::endl;
-  } while( v_aux > last_v );
 
+  } while( v_aux > last_v );
+  std::cout<<"Pivot: "<<pivot<<std::endl;
   // 2.5. if pivot has been found...
   if( !finished )
   {
@@ -58,7 +58,6 @@ TList NextAnagram( const TList& lst )
     /** TODO #3 **/
     do
     {
-      std::cout<<"Below pivot"<<std::endl;
       if(q.front()<pivot)
       {
         v_aux=q.front();
@@ -73,6 +72,7 @@ TList NextAnagram( const TList& lst )
       }
     } while( pivot > v_aux );
     // 4. Put it into stack
+    std::cout<<"v_aux below: "<<v_aux<<std::endl;
     s.push( v_aux );
 
     // 5. Put pivot back to queue
@@ -82,7 +82,6 @@ TList NextAnagram( const TList& lst )
     /** TODO #4 **/
     do
     {
-      std::cout<<"Above pivot"<<std::endl;
       if(q.front()<pivot)
       {
         v_aux=q.front();
@@ -97,6 +96,7 @@ TList NextAnagram( const TList& lst )
       }
     } while( pivot < v_aux );
     // 7. Put it into stack
+    std::cout<<"v_aux above: "<<v_aux<<std::endl;
     s.push( v_aux );
 
   } // fi
@@ -105,7 +105,6 @@ TList NextAnagram( const TList& lst )
   /** TODO #5 **/
   while(!q.empty())
   {
-    std::cout<<"emptying queue"<<std::endl;
     s.push(q.front());
     q.pop();
   }
@@ -113,7 +112,6 @@ TList NextAnagram( const TList& lst )
   /** TODO #6 **/
   while(!s.empty())
   {
-    std::cout<<"filling res"<<std::endl;
     res.insert(res.begin(),s.top());
     s.pop();
   }
