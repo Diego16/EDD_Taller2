@@ -122,9 +122,9 @@ TList NextAnagram( const TList& lst )
       }
     } while( pivot < v_aux );
     // 7. Put it into stack
-    std::cout<<"v_aux above: "<<v_aux<<std::endl;
+    std::cout<<std::endl<<"v_aux above: "<<v_aux<<std::endl;
     s.push( v_aux );
-    std::cout<<std::endl<<"Stack above pivot: "<<std::endl;
+    std::cout<<"Stack above pivot: "<<std::endl;
     while(!s.empty())
     {
       TValue aux=s.top();
@@ -146,6 +146,19 @@ TList NextAnagram( const TList& lst )
   {
     s.push(q.front());
     q.pop();
+  }
+  std::cout<<std::endl<<"Final stack"<<std::endl;
+  while(!s.empty())
+  {
+    TValue aux=s.top();
+    std::cout<<s.top();
+    s.pop();
+    s2.push(aux);
+  }
+  while(!s2.empty())
+  {
+    s.push(s2.top());
+    s2.pop();
   }
   // 9. Fill the final answer in reverse order by emptying the stack
   /** TODO #6 **/
