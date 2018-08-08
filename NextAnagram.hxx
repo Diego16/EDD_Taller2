@@ -27,10 +27,12 @@ TList NextAnagram( const TList& lst )
     s.push(*lIt);
 
   std::stack< TValue > s2;
+  std::queue< TValue > q2;
+  TValue aux;
   std::cout<<"Inital stack: "<<std::endl;
   while(!s.empty())
   {
-    TValue aux=s.top();
+    aux=s.top();
     std::cout<<s.top();
     s.pop();
     s2.push(aux);
@@ -62,7 +64,19 @@ TList NextAnagram( const TList& lst )
     } // fi
 
   } while( v_aux > last_v );
-
+  std::cout<<std::endl<<"Queue:"<<std::endl;
+  while(!q.empty())
+  {
+    aux=q.front();
+    std::cout<<s.top();
+    q.pop();
+    q2.push(aux);
+  }
+  while(!q2.empty())
+  {
+    q.push(q2.front());
+    q2.pop();
+  }
   // 2.5. if pivot has been found...
   if( !finished )
   {
@@ -88,7 +102,7 @@ TList NextAnagram( const TList& lst )
     std::cout<<"Stack below pivot: "<<std::endl;
     while(!s.empty())
     {
-      TValue aux=s.top();
+      aux=s.top();
       std::cout<<s.top();
       s.pop();
       s2.push(aux);
@@ -121,7 +135,7 @@ TList NextAnagram( const TList& lst )
     std::cout<<"Stack above pivot: "<<std::endl;
     while(!s.empty())
     {
-      TValue aux=s.top();
+      aux=s.top();
       std::cout<<s.top();
       s.pop();
       s2.push(aux);
@@ -144,7 +158,7 @@ TList NextAnagram( const TList& lst )
   std::cout<<std::endl<<"Final stack"<<std::endl;
   while(!s.empty())
   {
-    TValue aux=s.top();
+    aux=s.top();
     std::cout<<s.top();
     s.pop();
     s2.push(aux);
