@@ -46,6 +46,7 @@ int main( int argc, char* argv[] )
 
     // Get type of data
     line_stream >> line_type;
+    std::cout<<line_type<<std::endl;
     if( line_type == 0 )
     {
       // String list
@@ -72,7 +73,6 @@ int main( int argc, char* argv[] )
     {
       // Char list
       TCharacterList charList = ReadAsCharacterList( line_stream );
-
       // Compute number of anagrams
       unsigned long nAnagrams = ComputeNumberOfAnagrams( charList );
       if( nAnagrams >= MAX_ANAGRAMS )
@@ -95,13 +95,9 @@ int main( int argc, char* argv[] )
   } while( line_type != 2 );
 
   // Close input stream, if needed (ie. it wasn't taken from std::cin)
-  if( *input != std::cin )
-  {
-    dynamic_cast< std::ifstream* >( input )->close( );
-    delete input;
+  dynamic_cast< std::ifstream* >( input )->close( );
+  delete input;
 
-  } // fi
-  
   return( 0 );
 }
 

@@ -1,6 +1,7 @@
 #ifndef __NEXTANAGRAM__HXX__
 #define __NEXTANAGRAM__HXX__
 
+#include <iterator>
 #include <queue>
 #include <stack>
 
@@ -11,6 +12,7 @@ TList NextAnagram( const TList& lst )
   // Get contained type
   typedef typename TList::value_type TValue;
 
+  std::cout<<"Entro function"<<std::endl;
   // Used variables
   std::queue< TValue > q;
   std::stack< TValue > s;
@@ -22,7 +24,8 @@ TList NextAnagram( const TList& lst )
 
   // 1. Stack the input values
   /** TODO #1 **/
-
+  for(lIt=lst.begin();lIt!=lst.end();lIt++)
+    s.push(*lIt);
   // 2. Try to find a pivot
   finished = false;
   v_aux = s.top( );
@@ -39,10 +42,11 @@ TList NextAnagram( const TList& lst )
     else
     {
       // 2.1 Pop value from stack and store it into 'v_aux'
-      /** TODO #2 **/ 
-
+      /** TODO #2 **/
+      v_aux=s.top();
+      s.pop();
     } // fi
-
+    std::cout<<"Finding pivot"<<std::endl;
   } while( v_aux > last_v );
 
   // 2.5. if pivot has been found...
@@ -52,7 +56,22 @@ TList NextAnagram( const TList& lst )
 
     // 3. Find a value just below pivot
     /** TODO #3 **/
-
+    do
+    {
+      std::cout<<"Below pivot"<<std::endl;
+      if(q.front()<pivot)
+      {
+        v_aux=q.front();
+        q.pop();
+      }
+      else
+      {
+        v_aux=q.front();
+        q.pop();
+        q.push(v_aux);
+        v_aux=pivot;
+      }
+    } while( pivot > v_aux );
     // 4. Put it into stack
     s.push( v_aux );
 
@@ -61,7 +80,22 @@ TList NextAnagram( const TList& lst )
 
     // 6. Find the value just above pivot
     /** TODO #4 **/
-
+    do
+    {
+      std::cout<<"Above pivot"<<std::endl;
+      if(q.front()<pivot)
+      {
+        v_aux=q.front();
+        q.pop();
+      }
+      else
+      {
+        v_aux=q.front();
+        q.pop();
+        q.push(v_aux);
+        v_aux=pivot;
+      }
+    } while( pivot < v_aux );
     // 7. Put it into stack
     s.push( v_aux );
 
@@ -69,11 +103,23 @@ TList NextAnagram( const TList& lst )
 
   // 8. Finish filling the stack by emptying the queue
   /** TODO #5 **/
-
+  while(!q.empty())
+  {
+    std::cout<<"emptying queue"<<std::endl;
+    s.push(q.front());
+    q.pop();
+  }
   // 9. Fill the final answer in reverse order by emptying the stack
   /** TODO #6 **/
-
+  while(!s.empty())
+  {
+    std::cout<<"filling res"<<std::endl;
+    res.insert(res.begin(),s.top());
+    s.pop();
+  }
   // 10. Return
+  for(lIt=lst.begin();lIt!=lst.end();lIt++)
+  std::cout<<*lIt;
   return( res );
 }
 
@@ -82,6 +128,14 @@ template< class TList >
 unsigned long ComputeNumberOfAnagrams( const TList& lst )
 {
   /** TODO #7 **/
+  unsigned long numAnagrams=1;
+  int n=0;
+  n=lst.size();
+  for(int i=1;i<=n;i++)
+  {
+    numAnagrams*=i;
+  }
+  return numAnagrams;
 }
 
 #endif // __NEXTANAGRAM__HXX__
