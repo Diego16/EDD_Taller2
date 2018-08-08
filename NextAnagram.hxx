@@ -132,7 +132,7 @@ TList NextAnagram( const TList& lst )
     /** TODO #4 **/
     do
     {
-      if(q.front()<pivot)
+      if(q.front()>pivot)
       {
         v_aux=q.front();
         q.pop();
