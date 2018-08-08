@@ -74,7 +74,8 @@ TList NextAnagram( const TList& lst )
     // 4. Put it into stack
     std::cout<<"v_aux below: "<<v_aux<<std::endl;
     s.push( v_aux );
-
+    std::cout<<"Stack below pivot: "<<std::endl;
+    std::stack< TValue > s2;
     // 5. Put pivot back to queue
     q.push( pivot );
 
@@ -98,7 +99,20 @@ TList NextAnagram( const TList& lst )
     // 7. Put it into stack
     std::cout<<"v_aux above: "<<v_aux<<std::endl;
     s.push( v_aux );
-
+    std::cout<<"Stack above pivot: "<<std::endl;
+    while(!s.empty())
+    {
+      TValue aux=s.top();
+      std::cout<<s.top();
+      s.pop();
+      s2.push(aux);
+    }
+    while(!s2.empty())
+    {
+      s.push(s2.top());
+      s2.pop();
+    }
+    
   } // fi
 
   // 8. Finish filling the stack by emptying the queue
@@ -116,6 +130,7 @@ TList NextAnagram( const TList& lst )
     s.pop();
   }
   // 10. Return
+  std::cout<<"res: ";
   for(lIt=lst.begin();lIt!=lst.end();lIt++)
     std::cout<<*lIt;
   std::cout<<std::endl;
