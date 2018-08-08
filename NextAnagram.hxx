@@ -100,16 +100,10 @@ TList NextAnagram( const TList& lst )
     /** TODO #3 **/
     do
     {
-      if(q.front()<pivot)
-      {
-        v_aux=q.front();
-        q.pop();
-      }
-      else
-      {
-        q.pop();
-      }
-    } while( pivot >= v_aux && !q.empty());
+      v_aux=q.front();
+      q.pop();
+      q.push(v_aux);
+    } while( pivot > q.back());
     // 4. Put it into stack
     std::cout<<"v_aux below: "<<v_aux<<std::endl;
     s.push( v_aux );
@@ -145,16 +139,10 @@ TList NextAnagram( const TList& lst )
     /** TODO #4 **/
     do
     {
-      if(q.front()>pivot)
-      {
-        v_aux=q.front();
-        q.pop();
-      }
-      else
-      {
-        q.pop();
-      }
-    } while( pivot >= v_aux && !q.empty());
+      v_aux=q.front();
+      q.pop();
+      q.push(v_aux);
+    } while( pivot < q.back());
     // 7. Put it into stack
     std::cout<<std::endl<<"v_aux above: "<<v_aux<<std::endl;
     s.push( v_aux );
