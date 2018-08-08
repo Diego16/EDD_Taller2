@@ -12,7 +12,6 @@ TList NextAnagram( const TList& lst )
   // Get contained type
   typedef typename TList::value_type TValue;
 
-  std::cout<<"Entro function"<<std::endl;
   // Used variables
   std::queue< TValue > q;
   std::stack< TValue > s;
@@ -26,6 +25,21 @@ TList NextAnagram( const TList& lst )
   /** TODO #1 **/
   for(lIt=lst.begin();lIt!=lst.end();lIt++)
     s.push(*lIt);
+
+  std::stack< TValue > s2;
+  std::cout<<"Inital stack: "<<std::endl;
+  while(!s.empty())
+  {
+    TValue aux=s.top();
+    std::cout<<s.top();
+    s.pop();
+    s2.push(aux);
+  }
+  while(!s2.empty())
+  {
+    s.push(s2.top());
+    s2.pop();
+  }
   // 2. Try to find a pivot
   finished = false;
   v_aux = s.top( );
@@ -75,7 +89,18 @@ TList NextAnagram( const TList& lst )
     std::cout<<"v_aux below: "<<v_aux<<std::endl;
     s.push( v_aux );
     std::cout<<"Stack below pivot: "<<std::endl;
-    std::stack< TValue > s2;
+    while(!s.empty())
+    {
+      TValue aux=s.top();
+      std::cout<<s.top();
+      s.pop();
+      s2.push(aux);
+    }
+    while(!s2.empty())
+    {
+      s.push(s2.top());
+      s2.pop();
+    }
     // 5. Put pivot back to queue
     q.push( pivot );
 
@@ -99,7 +124,7 @@ TList NextAnagram( const TList& lst )
     // 7. Put it into stack
     std::cout<<"v_aux above: "<<v_aux<<std::endl;
     s.push( v_aux );
-    std::cout<<"Stack above pivot: "<<std::endl;
+    std::cout<<std::endl<<"Stack above pivot: "<<std::endl;
     while(!s.empty())
     {
       TValue aux=s.top();
@@ -112,7 +137,7 @@ TList NextAnagram( const TList& lst )
       s.push(s2.top());
       s2.pop();
     }
-    
+
   } // fi
 
   // 8. Finish filling the stack by emptying the queue
@@ -130,7 +155,7 @@ TList NextAnagram( const TList& lst )
     s.pop();
   }
   // 10. Return
-  std::cout<<"res: ";
+  std::cout<<std::endl<<"res: ";
   for(lIt=lst.begin();lIt!=lst.end();lIt++)
     std::cout<<*lIt;
   std::cout<<std::endl;
