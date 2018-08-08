@@ -104,7 +104,7 @@ TList NextAnagram( const TList& lst )
       if(q.front()<pivot)
       {
         v_aux=q.front();
-        std::cout<<std::endl<<"If front queue: "<<q.front()
+        std::cout<<std::endl<<"If front queue: "<<q.front()<<std::endl;
         q.pop();
       }
       else
