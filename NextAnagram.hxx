@@ -48,12 +48,12 @@ TList NextAnagram( const TList& lst )
     } // fi
 
   } while( v_aux > last_v );
-  std::cout<<"Pivot: "<<pivot<<std::endl;
+
   // 2.5. if pivot has been found...
   if( !finished )
   {
     pivot = v_aux;
-
+    std::cout<<"Pivot: "<<pivot<<std::endl;
     // 3. Find a value just below pivot
     /** TODO #3 **/
     do
