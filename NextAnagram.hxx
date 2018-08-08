@@ -62,7 +62,7 @@ TList NextAnagram( const TList& lst )
       v_aux=s.top();
       s.pop();
     } // fi
-
+    std::cout<<"v_aux: "<<v_aux<<std::endl;
   } while( v_aux > last_v );
   std::cout<<std::endl<<"Queue:"<<std::endl;
   while(!q.empty())
