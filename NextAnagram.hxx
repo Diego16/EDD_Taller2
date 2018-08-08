@@ -96,7 +96,7 @@ TList NextAnagram( const TList& lst )
       {
         q.pop();
       }
-    } while( pivot > v_aux );
+    } while( pivot >= v_aux );
     // 4. Put it into stack
     std::cout<<"v_aux below: "<<v_aux<<std::endl;
     s.push( v_aux );
@@ -141,7 +141,7 @@ TList NextAnagram( const TList& lst )
       {
         q.pop();
       }
-    } while( pivot < v_aux );
+    } while( pivot <= v_aux );
     // 7. Put it into stack
     std::cout<<std::endl<<"v_aux above: "<<v_aux<<std::endl;
     s.push( v_aux );
