@@ -82,7 +82,7 @@ TList NextAnagram( const TList& lst )
   if( !finished )
   {
     pivot = v_aux;
-    std::cout<<std::endl<<"Front queue: "<<std::cout<<q.front()<<"Pivot: "<<pivot<<std::endl;
+    std::cout<<std::endl<<"Front queue: "<<q.front()<<"Pivot: "<<pivot<<std::endl;
     // 3. Find a value just below pivot
     /** TODO #3 **/
     do
