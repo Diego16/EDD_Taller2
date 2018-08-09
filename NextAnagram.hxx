@@ -69,7 +69,6 @@ TList NextAnagram( const TList& lst )
     {
       v_aux=q.front();
       q.pop();
-      q.push(v_aux);
     } while( pivot < v_aux);
     // 7. Put it into stack
     s.push( v_aux );
