@@ -94,9 +94,6 @@ int main( int argc, char* argv[] )
   } while( line_type != 2 );
 
   // Close input stream, if needed (ie. it wasn't taken from std::cin)
-  dynamic_cast< std::ifstream* >( input )->close( );
-  delete input;
-
   return( 0 );
 }
 
